@@ -1,7 +1,7 @@
 import json
 import requests
 
-url = 'https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/240/JSON/?response_type=display'
+url = 'https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/341/JSON/?response_type=display'
 res = requests.get(url)
 json_data = res.json()
 # print(type(json_data))
@@ -65,8 +65,8 @@ else:
         if second_select_data['TOCHeading'] == '1D NMR Spectra':
             third_select_data = second_select_data['Section'][0]
 
-            if third_select_data[0]['TOCHeading'] == '13C NMR Spectra':
-                fourth_select_data = third_select_data[0]['Information']
+            if third_select_data['TOCHeading'] == '13C NMR Spectra':
+                fourth_select_data = third_select_data['Information']
 
                 for i in range(1, len(fourth_select_data)):
                     final_decide = fourth_select_data[i]
