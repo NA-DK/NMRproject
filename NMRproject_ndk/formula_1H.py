@@ -88,7 +88,7 @@ improve_chemformula = chemformula.upper()
 # 대문자를 입력해도 되게끔 upper함수를 이용함.
 # 원래 pubchempy모듈에서는 소문자로 구성된 분자식을 인식하지 못함.
 num = 1
-for compound in get_compounds(improve_chemformula, 'formula', listkey_count=1, listkey_start=num):
+for compound in get_compounds(improve_chemformula, 'formula', searchtype='similarity', listkey_count=10, listkey_start=num):
     formula_result = compound
 # 분자식 하나에 해당하는 물질이 많은 경우가 있고 이걸 한번에 다 로드하는 경우, 응답오류가 발생하는 현상을 확인함.
 # 그렇기 때문에 listkey_count를 이용하여 한번에 불러오는 물질의 개수를 3개로 설정하고
@@ -101,7 +101,7 @@ while True:
     # 출력 값안에 만약 본인이 원하는 물질이 없을 경우, 어떤 입력값을 받아 출력을 계속하게 만듬(추후에 버튼을 클릭하는 방식으로 만들 것임.)
     if formula_fin_decide == 'a':
         num += 1
-        for compound in get_compounds(improve_chemformula, 'formula', listkey_count=1, listkey_start=num):
+        for compound in get_compounds(improve_chemformula, 'formula', listkey_count=10, listkey_start=num):
             formula_result = compound
         # 원하는 값이 없을 경우 출력 순번에 3을 더하고, 그 뒤에 3개의 물질을 출력함.
         formula_cid_result = formula_result.cid
